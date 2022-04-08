@@ -65,13 +65,15 @@ public class busManagementSystem {
                             } catch (Exception e) {
                                 System.out.println("Error occur when running option 3.");
                             }
-                        } else if (option == 0) {
+                        } else {
                             System.out.println("Bye!");
                             quit = true;
                         }
                     } catch (Exception e) {
                         System.out.println("Error occur in system.");
                     }
+                } else {
+                    System.out.println("invalid number, please enter the correct number of your choice.");
                 }
             } else {
                 System.out.println("Error, please input a number.");
