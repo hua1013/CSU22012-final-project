@@ -42,7 +42,13 @@ public class busManagementSystem {
                                     String time = scanner.next().trim();
                                     if (time.trim().matches("(([0-1]?[0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]")) {
                                         for (int i = 1; i < stopTimes.size(); i++) {
-                                            if (stopTimes.get(i).trim().contains(time.trim())) {
+                                            String compare = stopTimes.get(i).trim();
+                                            String[] compareArray = compare.split(", ");
+                                            String[] compareArray2 = compare.split(",");
+                                            if (compareArray[1].equals(time)) {
+                                                arrivalTime.add(stopTimes.get(i).trim());
+                                            }
+                                            if (compareArray2[1].equals(time)) {
                                                 arrivalTime.add(stopTimes.get(i).trim());
                                             }
                                             searchTime = true;
