@@ -36,7 +36,7 @@ public class busManagementSystem {
                                         .readAllLines(Paths.get("stop_times.txt"));
                                 ArrayList<String> arrivalTime = new ArrayList<String>();
                                 System.out
-                                        .println("Enter the arrival time you want to search (HH:MM:SS - e.g.08:01:05)");
+                                        .println("Enter the arrival time you want to search (HH:MM:SS - e.g.5:25:00)");
                                 boolean searchTime = false;
                                 try {
                                     String time = scanner.next().trim();
@@ -54,10 +54,11 @@ public class busManagementSystem {
                                             searchTime = true;
                                         }
                                     } else {
-                                        System.out.println("Please check your input format HH:MM:SS - e.g.08:01:05");
+                                        System.out.println("Please check your input format HH:MM:SS - e.g.5:25:00");
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Error occur when take in input.");
+                                    System.out.println(
+                                            "Error occur when take in input. Please enter the exact time format.");
                                 }
                                 if (searchTime) {
                                     System.out.println(
