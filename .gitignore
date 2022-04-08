@@ -6,3 +6,11 @@
 /Queue$ListIterator.class
 /Queue$Node.class
 /searchStops.class
+/Edge.class
+/busStop.class
+/shortestPath.class
+/network.class
+/findPath.class
+/arrivalTime.class
+/arrivalTime$stop.class
+/arrivalTime$stopComparator.class
