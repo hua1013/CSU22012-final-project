@@ -20,15 +20,15 @@ public class busStop {
                 String stopID = stopArray[0];
                 StringBuilder sb = new StringBuilder();
                 sb.append(stopArray[2]);
-                if (sb.substring(0, 2).equals("WB") || sb.substring(0, 2).equals("NB")
-                        || sb.substring(0, 2).equals("SB") || sb.substring(0, 2).startsWith("EB")) {
-                    String prefix = sb.substring(0, 2);
-                    sb.delete(0, 3);
-                    sb.append(" " + prefix);
-                } else if (sb.substring(0, 8).equals("FLAGSTOP")) {
-                    String prefix = sb.substring(0, 11);
+                if (sb.substring(0, 8).equals("FLAGSTOP")) {
+                    String dir = sb.substring(0, 11);
                     sb.delete(0, 12);
-                    sb.append(" " + prefix);
+                    sb.append(" " + dir);
+                } else if (sb.substring(0, 2).equals("NB") || sb.substring(0, 2).equals("SB")
+                        || sb.substring(0, 2).equals("WB") || sb.substring(0, 2).equals("EB")) {
+                    String dir = sb.substring(0, 2);
+                    sb.delete(0, 3);
+                    sb.append(" " + dir);
                 }
                 String stopLists = sb.toString();
                 tst.put(stopLists, stopID);
