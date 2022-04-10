@@ -19,7 +19,10 @@ public class busManagementSystem {
                 if (option >= 0 && option <= 3) {
                     try {
                         if (option == 1) {
-                            System.out.println("choice 1");
+                            System.out.println("option 1");
+                            findPath path = new findPath();
+                            path.setFile();
+                            System.out.println("Unfinished.");
                         } else if (option == 2) {
                             busStop search = new busStop();
                             System.out.println(
@@ -42,9 +45,11 @@ public class busManagementSystem {
                     }
                 } else {
                     System.out.println("invalid number, please enter the correct number of your choice.");
+                    quit = true;
                 }
             } else {
                 System.out.println("Error, please input a number.");
+                quit = true;
             }
         }
         scanner.close();

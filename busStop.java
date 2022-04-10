@@ -58,7 +58,7 @@ public class busStop {
             stopDetails.add(map.get(tst.get(info)));
         });
         if (stopDetails.isEmpty()) {
-            stopDetails.add("Undinfine bus stop, please make sure you enter in the correct bus stop number. \n");
+            stopDetails.add("Undinfine bus stop, please make sure you enter in the correct bus stop name. \n");
         }
         return stopDetails;
     }

@@ -1,6 +1,7 @@
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class arrivalTime {
@@ -12,14 +13,25 @@ public class arrivalTime {
             boolean validTime = false;
             try {
                 if (time.trim().matches("(([0-1]?[0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]")) {
+                    Date formatTime = new SimpleDateFormat("h:m:s", Locale.ENGLISH).parse(time);
+                    String compareTime = "10:00:00";
+                    boolean singleHour = false;
+                    Date compareString = new SimpleDateFormat("h:m:s", Locale.ENGLISH).parse(compareTime);
+                    if (compareString.compareTo(formatTime) > 0) {
+                        singleHour = true;
+                    }
                     for (int i = 1; i < stopTimes.size(); i++) {
                         String compare = stopTimes.get(i).trim();
-                        String[] compareArray = compare.split(", ");
-                        String[] compareArray2 = compare.split(",");
-                        if (compareArray[1].equals(time)) {
-                            arrivalTime.add(stopTimes.get(i).trim());
-                        } else if (compareArray2[1].equals(time)) {
-                            arrivalTime.add(stopTimes.get(i).trim());
+                        if (!singleHour) {
+                            String[] compareArray = compare.split(",");
+                            if (compareArray[1].equals(time)) {
+                                arrivalTime.add(stopTimes.get(i).trim());
+                            }
+                        } else {
+                            String[] compareArray = compare.split(", ");
+                            if (compareArray[1].equals(time)) {
+                                arrivalTime.add(stopTimes.get(i).trim());
+                            }
                         }
                         validTime = true;
                     }
@@ -27,8 +39,7 @@ public class arrivalTime {
                     System.out.println("Please check your input format HH:MM:SS - e.g.5:25:00");
                 }
             } catch (Exception e) {
-                System.out.println(
-                        "Error occur when take in input. Please enter the exact time format.");
+                System.out.println();
             }
             if (validTime) {
                 printArrivalTimes(arrivalTime);

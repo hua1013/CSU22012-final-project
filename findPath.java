@@ -13,10 +13,10 @@ public class findPath {
     public double distance[][];
     public int edge[][];
 
-    findPath(String stops, String stopTime, String transfers) {
+    public void setFile() {
         stopID = new HashMap<>();
         try {
-            File stopFile = new File(stops);
+            File stopFile = new File("stops.txt");
             Scanner stop = new Scanner(stopFile);
             stop.nextLine();
             int i = 0;
@@ -34,7 +34,7 @@ public class findPath {
         edges = new HashMap<>();
         tripID = new HashMap<>();
         try {
-            File timeFile = new File(stopTime);
+            File timeFile = new File("stop_times.txt");
             Scanner time = new Scanner(timeFile);
             time.nextLine();
             int i = 0;
@@ -55,7 +55,7 @@ public class findPath {
         cost = new HashMap<>();
         weight = new HashMap<>();
         try {
-            File transfersFile = new File(transfers);
+            File transfersFile = new File("transfers.txt");
             Scanner transfer = new Scanner(transfersFile);
             transfer.nextLine();
             int i = 0;
@@ -65,7 +65,9 @@ public class findPath {
                 startStop.put(i, transferArray[0]);
                 endStop.put(i, transferArray[1]);
                 cost.put(i, transferArray[2]);
-                weight.put(i, transferArray[3]);
+                if (transferArray.length != 3) {
+                    weight.put(i, transferArray[3]);
+                }
                 i++;
             }
             transfer.close();
